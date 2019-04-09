@@ -1,0 +1,22 @@
+{
+  "name": "PiHome-EMON-Handler",
+  "version": "1.0.0",
+  "description": "Backend for PiHome-EMON module",
+  "author": "Lars Moesman",
+  "license": "MIT",
+  
+  "scripts": {
+    "API": "cd API/ && yarn",
+    "API-Main": "cd API/ && yarn main",
+    "API-Build": "cd API/ && yarn build",
+    "Handler": "cd EMON-Handler && yarn",
+    "Handler-Main": "cd EMON-Handler/ && yarn main",
+    "Handler-Build": "cd EMON-Handler/ && yarn build"
+  },
+
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2"
+  }
+}
