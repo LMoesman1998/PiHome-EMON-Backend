@@ -2,12 +2,20 @@ import mqtt from 'mqtt';
 import moment from 'moment';
 
 import { brokerUrl, brokerOptions, meterTopic } from './config';
+import { connectMongo } from './db';
 
 const client = mqtt.connect(brokerUrl, brokerOptions);
 let proceedMQTT = false;
 
 const init = async () => {
-    // Connect to DB then set proceedMQTT to true
+    await connectMongo()
+        .then(result => {
+            console.log('PIHOME: Connected to mongodb!');
+            proceedMQTT = true;
+        })
+        .catch(error => {
+            throw new Error(error.message);
+        });
 };
 
 init();
@@ -26,7 +34,7 @@ client.on('message', async (topic, message) => {
             const jsonMessage = JSON.parse(message.toString());
             // Handle message
             // Publish on topic
-            // Break
+            break;
         }
         default: {
             throw new Error('PIHOME-ERROR: This topic isn\'t implemented yet!');
