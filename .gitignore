@@ -4,3 +4,5 @@ yarn-error\.log
 API/build/
 
 EMON-Handler/build/
+
+EMON-Handler/src/config\.js
