@@ -20,11 +20,11 @@ const tst = ({}, value) => {
   let date = moment(val.slice(0, -1), 'YYMMDDhhmmss');
  
   if (DST == 'W') date = date.subtract(1, 'h');
-  return date.toISOString(true);
+  return date.toISOString();
 };
 
 const customPowerFailure = ({number, min, max, tag}, value) => {
-  //1-0:99.97.0(1)(0-0:96.7.19)(180416085946S)(0000000346*s)\
+  //1-0:99.97.0(1)(0-0:96.7.19)(180416085946S)(0000000346*s)
   const hasFailure = value.slice(1, 2);
   value = value.slice(4);
   const values = value.split('(');
@@ -34,6 +34,17 @@ const customPowerFailure = ({number, min, max, tag}, value) => {
   const timestamp = tst({}, `(${values[1]})`);
   const failureTime = fn({number, min, max, tag}, `(${values[2].slice(0, -2)})`)
   return `${timestamp},${failureTime}`; 
+};
+
+const customGas = ({number, min, max, tag}, value) => {
+  //0-1:24.2.1(190410193500S)(01045.652*m3)
+  const values = value.split(')');
+  for(let index = 0; index < 2; index++) {
+    values[index] = values[index].slice(1);
+  };
+  const timestamp = tst({}, `(${values[0]})`);
+  const gasValue = fn({number, min, max, tag}, `(${values[1].slice(0, -3)})`);
+  return `${timestamp},${gasValue}`; 
 };
 
 const obis = {
@@ -350,27 +361,25 @@ const obis = {
     name: "device type",
     function: fn,
     functionInfo: {
-      number: 5,
-      min: 3,
-      max: 3,
-      tag: 18
+      number: 3,
+      min: 0,
+      max: 0,
+      tag: 17
     }
   },
   '0-1:96.1.0': {
     name: "identifier gas",
-    function: fn,
+    function: sn,
     functionInfo: {
-      number: 5,
-      min: 3,
-      max: 3,
-      tag: 18
+      number: 0,
+      tag: 9
     }
   },
   '0-1:24.2.1': {
     name: "value",
-    function: fn,
+    function: customGas,
     functionInfo: {
-      number: 5,
+      number: 8,
       min: 3,
       max: 3,
       tag: 18
