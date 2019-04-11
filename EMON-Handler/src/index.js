@@ -1,7 +1,7 @@
 import mqtt from 'mqtt';
 import moment from 'moment';
 
-import { brokerUrl, brokerOptions, meterTopic} from './config';
+import { brokerUrl, brokerOptions, meterTopic} from './../../config';
 import { connectMongo } from './db';
 import { processTelegram } from './emon-handler';
 

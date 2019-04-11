@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import { mongoURL } from './config';
+import { mongoURL } from './../../config';
 
 const mongoOptions = {
     useNewUrlParser: true
