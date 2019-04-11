@@ -49,7 +49,7 @@ const customGas = ({number, min, max, tag}, value) => {
 
 const obis = {
   '1-3:0.2.8': {
-    name: "version",
+    name: 'version',
     function: sn,
     functionInfo: {
       number: 2,
@@ -57,12 +57,12 @@ const obis = {
     }
   },
   '0-0:1.0.0': {
-    name: "timestamp",
+    name: 'timestamp',
     function: tst,
     functionInfo: {}
   },
   '0-0:96.1.1': {
-    name: "identifier",
+    name: 'identifier',
     function: sn,
     functionInfo: {
       number: 0,
@@ -70,7 +70,7 @@ const obis = {
     }
   },
   '1-0:1.8.1': {
-    name: "energy delivered tariff1",
+    name: 'energy delivered tariff1',
     function: fn,
     functionInfo: {
       number: 9,
@@ -80,7 +80,7 @@ const obis = {
     }
   },
   '1-0:1.8.2': {
-    name: "energy delivered tariff2",
+    name: 'energy delivered tariff2',
     function: fn,
     functionInfo: {
       number: 9,
@@ -90,7 +90,7 @@ const obis = {
     }
   },
   '1-0:2.8.1': {
-    name: "energy returned tariff1",
+    name: 'energy returned tariff1',
     function: fn,
     functionInfo: {
       number: 9,
@@ -100,7 +100,7 @@ const obis = {
     }
   },
   '1-0:2.8.2': {
-    name: "energy returned tariff2",
+    name: 'energy returned tariff2',
     function: fn,
     functionInfo: {
       number: 9,
@@ -110,7 +110,7 @@ const obis = {
     }
   },
   '0-0:96.14.0': {
-    name: "tariff",
+    name: 'tariff',
     function: sn,
     functionInfo: {
       number: 4,
@@ -118,7 +118,7 @@ const obis = {
     }
   },
   '1-0:1.7.0': {
-    name: "power delivered",
+    name: 'power delivered',
     function: fn,
     functionInfo: {
       number: 5,
@@ -128,7 +128,7 @@ const obis = {
     }
   },
   '1-0:2.7.0': {
-    name: "power returned",
+    name: 'power returned',
     function: fn,
     functionInfo: {
       number: 5,
@@ -138,7 +138,7 @@ const obis = {
     }
   },
   '0-0:96.7.21': {
-    name: "power failures",
+    name: 'power failures',
     function: fn,
     functionInfo: {
       number: 5,
@@ -148,7 +148,7 @@ const obis = {
     }
   },
   '0-0:96.7.9': {
-    name: "long power failures",
+    name: 'long power failures',
     function: fn,
     functionInfo: {
       number: 5,
@@ -158,7 +158,7 @@ const obis = {
     }
   },
   '1-0:99.97.0': {
-    name: "power failure log",
+    name: 'power failure log',
     function: customPowerFailure,
     functionInfo: {
       number: 10,
@@ -168,7 +168,7 @@ const obis = {
     }
   },
   '1-0:32.32.0': {
-    name: "voltage sags l1",
+    name: 'voltage sags l1',
     function: fn,
     functionInfo: {
       number: 5,
@@ -178,7 +178,7 @@ const obis = {
     }
   },
   '1-0:52.32.0': {
-    name: "voltage sags l2",
+    name: 'voltage sags l2',
     function: fn,
     functionInfo: {
       number: 5,
@@ -188,7 +188,7 @@ const obis = {
     }
   },
   '1-0:72.32.0': {
-    name: "voltage sags l3",
+    name: 'voltage sags l3',
     function: fn,
     functionInfo: {
       number: 5,
@@ -198,7 +198,7 @@ const obis = {
     }
   },
   '1-0:32.36.0': {
-    name: "voltage swells l1",
+    name: 'voltage swells l1',
     function: fn,
     functionInfo: {
       number: 5,
@@ -208,7 +208,7 @@ const obis = {
     }
   },
   '1-0:52.36.0': {
-    name: "voltage swells l2",
+    name: 'voltage swells l2',
     function: fn,
     functionInfo: {
       number: 5,
@@ -218,7 +218,7 @@ const obis = {
     }
   },
   '1-0:72.36.0': {
-    name: "voltage swells l3",
+    name: 'voltage swells l3',
     function: fn,
     functionInfo: {
       number: 5,
@@ -228,7 +228,7 @@ const obis = {
     }
   },
   '0-0:96.13.0': {
-    name: "message",
+    name: 'message',
     function: sn,
     functionInfo: {
       number: 0,
@@ -236,7 +236,7 @@ const obis = {
     }
   },
   '1-0:32.7.0': {
-    name: "instantaneous voltage l1",
+    name: 'instantaneous voltage l1',
     function: fn,
     functionInfo: {
       number: 4,
@@ -246,7 +246,7 @@ const obis = {
     }
   },
   '1-0:52.7.0': {
-    name: "instantaneous voltage l2",
+    name: 'instantaneous voltage l2',
     function: fn,
     functionInfo: {
       number: 4,
@@ -256,7 +256,7 @@ const obis = {
     }
   },
   '1-0:72.7.0': {
-    name: "instantaneous voltage l3",
+    name: 'instantaneous voltage l3',
     function: fn,
     functionInfo: {
       number: 4,
@@ -266,7 +266,7 @@ const obis = {
     }
   },
   '1-0:31.7.0': {
-    name: "instantaneous current l1",
+    name: 'instantaneous current l1',
     function: fn,
     functionInfo: {
       number: 3,
@@ -276,7 +276,7 @@ const obis = {
     }
   },
   '1-0:51.7.0': {
-    name: "instantaneous current l2",
+    name: 'instantaneous current l2',
     function: fn,
     functionInfo: {
       number: 3,
@@ -286,7 +286,7 @@ const obis = {
     }
   },
   '1-0:71.7.0': {
-    name: "instantaneous current l3",
+    name: 'instantaneous current l3',
     function: fn,
     functionInfo: {
       number: 3,
@@ -296,7 +296,7 @@ const obis = {
     }
   },
   '1-0:21.7.0': {
-    name: "instantaneous power l1 p",
+    name: 'instantaneous power l1 p',
     function: fn,
     functionInfo: {
       number: 5,
@@ -306,7 +306,7 @@ const obis = {
     }
   },
   '1-0:41.7.0': {
-    name: "instantaneous power l2 p",
+    name: 'instantaneous power l2 p',
     function: fn,
     functionInfo: {
       number: 5,
@@ -316,7 +316,7 @@ const obis = {
     }
   },
   '1-0:61.7.0': {
-    name: "instantaneous power l3 p",
+    name: 'instantaneous power l3 p',
     function: fn,
     functionInfo: {
       number: 5,
@@ -326,7 +326,7 @@ const obis = {
     }
   },
   '1-0:22.7.0': {
-    name: "instantaneous power l1 n",
+    name: 'instantaneous power l1 n',
     function: fn,
     functionInfo: {
       number: 5,
@@ -336,7 +336,7 @@ const obis = {
     }
   },
   '1-0:42.7.0': {
-    name: "instantaneous power l2 n",
+    name: 'instantaneous power l2 n',
     function: fn,
     functionInfo: {
       number: 5,
@@ -346,7 +346,7 @@ const obis = {
     }
   },
   '1-0:62.7.0': {
-    name: "instantaneous power l3 n",
+    name: 'instantaneous power l3 n',
     function: fn,
     functionInfo: {
       number: 5,
@@ -358,7 +358,7 @@ const obis = {
 
 
   '0-1:24.1.0': {
-    name: "device type",
+    name: 'device type',
     function: fn,
     functionInfo: {
       number: 3,
@@ -368,7 +368,7 @@ const obis = {
     }
   },
   '0-1:96.1.0': {
-    name: "identifier gas",
+    name: 'identifier gas',
     function: sn,
     functionInfo: {
       number: 0,
@@ -376,7 +376,7 @@ const obis = {
     }
   },
   '0-1:24.2.1': {
-    name: "value",
+    name: 'value',
     function: customGas,
     functionInfo: {
       number: 8,

@@ -27,12 +27,6 @@ const meterSchema = new Schema({
   'tariff': {
     type: Number
   },
-  'power delivered': {
-    type: Number
-  },
-  'power returned': {
-    type: Number
-  },
   'power failures': {
     type: Number
   },
@@ -40,7 +34,7 @@ const meterSchema = new Schema({
     type: Number
   },
   'power failure log': {
-    type: Number
+    type: String
   },
   'voltage sags l1': {
     type: Number

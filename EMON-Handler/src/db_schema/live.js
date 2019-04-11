@@ -2,18 +2,18 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const gasSchema = new Schema({
-  'device type': {
-    type: String
+const liveSchema = new Schema({
+  'power delivered': {
+    type: Number
   },
-  'identifier gas': {
-    type: String
+  'power returned': {
+    type: Number
   },
   'identifier': {
     type: String
   },
-  'value': {
-    type: String
+  'timestamp': {
+    type: Date
   }
 },
 {
@@ -27,7 +27,7 @@ const gasSchema = new Schema({
 }
 );
 
-const gasModel = mongoose.model("gas", gasSchema, "gas");
+const liveModel = mongoose.model("live", liveSchema, "live");
 module.exports = {
-  gasModel
+  liveModel
 }

@@ -1,8 +1,13 @@
 import moment from 'moment';
 
 import { obis } from './emon-obis';
+import { insertObject } from './db';
+import { gasModel } from './db_schema/gas';
+import { meterModel } from './db_schema/meter';
+import { liveModel } from './db_schema/live';
 
 const gasItems = ['device type', 'identifier gas', 'value'];
+const liveItems = ['power delivered', 'power returned']
 
 const processLine = (line) => {
   const indexValue = line.indexOf('(');
@@ -18,8 +23,7 @@ const processTelegram = async (message) => {
   const lines = message.split('\r');
   let telegram = {};
   let gas = {};
-  lastSaved = JSON.parse(lastSaved);
-
+  let live = {};
   lines.forEach((line, index) => {
     const value = processLine(line);
     if (value !== undefined) telegram[value.key] = value.value;
@@ -31,19 +35,43 @@ const processTelegram = async (message) => {
     delete telegram[item];
   });
 
-  const updateMeter = (moment(telegram.timestamp).seconds() % 30  == 0);
-  const updateGas = (moment(telegram.timestamp).minutes() % 5  == 1) && (moment(telegram.timestamp).seconds() == 1);
- 
+  liveItems.forEach((item) => {
+    live[item] = telegram[item];
+    delete telegram[item];
+  });
+
+  live['identifier'] = telegram.identifier;
+  live['timestamp'] = telegram.timestamp;
+  gas['identifier'] = telegram.identifier;
+  console.log(liveItems);
+  const updateLive = (moment(telegram.timestamp).seconds() % 10 == 2);
+  const updateMeter = (moment(telegram.timestamp).seconds() % 30 == 0);
+  const updateGas = (moment(telegram.timestamp).minutes() % 5 == 1) && (moment(telegram.timestamp).seconds() == 1);
+
+  if (updateLive) {
+    console.log('Update Live!');
+    await saveData(new liveModel(live));
+  }
+
   if (updateMeter) {
     console.log('Update Meter!');
+    await saveData(new meterModel(telegram));
   }
 
   if (updateGas) {
-     console.log('Update Gas!')
+    console.log('Update Gas!');
+    await saveData(new gasModel(gas));
   }
 
   return { telegram, gas };
 };
+
+const saveData = async (model) => {
+  const result = await insertObject(model)
+    .catch(error => {
+      throw new Error(error.message);
+    });
+}
 
 module.exports = {
   processTelegram
