@@ -33,7 +33,7 @@ client.on('message', async (topic, message) => {
         case meterTopic: {
             const jsonMessage = JSON.parse(message.toString());
             const processedData = await processTelegram(jsonMessage.telegram);
-            console.log(processedData);
+           // console.log(processedData);
             // Handle message
             // Publish on topic
             break;

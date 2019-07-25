@@ -12,85 +12,88 @@ const meterSchema = new Schema({
   'identifier': {
     type: String
   },
-  'energy delivered tariff1': {
+  'energy_delivered_tariff1': {
     type: Number
   },
-  'energy delivered tariff2': {
+  'energy_delivered_tariff2': {
     type: Number
   },
-  'energy returned tariff1': {
+  'energy_returned_tariff1': {
     type: Number
   },
-  'energy returned tariff2': {
+  'energy_returned_tariff2': {
     type: Number
   },
   'tariff': {
     type: Number
   },
-  'power failures': {
+  'power_failures': {
     type: Number
   },
-  'long power failures': {
+  'long_power_failures': {
     type: Number
   },
-  'power failure log': {
-    type: String
+  'power_failure_log_timestamp': {
+    type: Date
   },
-  'voltage sags l1': {
+  'power_failure_log_value': {
     type: Number
   },
-  'voltage sags l2': {
+  'voltage_sags_l1': {
     type: Number
   },
-  'voltage sags l3': {
+  'voltage_sags_l2': {
     type: Number
   },
-  'voltage swells l1': {
+  'voltage_sags_l3': {
     type: Number
   },
-  'voltage swells l2': {
+  'voltage_swells_l1': {
     type: Number
   },
-  'voltage swells l3': {
+  'voltage_swells_l2': {
+    type: Number
+  },
+  'voltage_swells_l3': {
     type: Number
   },
   'message': {
     type: String
   },
-  'instantaneous voltage l1': {
+  'instantaneous_voltage_l1': {
     type: Number
   },
-  'instantaneous voltage l2': {
+  'instantaneous_voltage_l2': {
     type: Number
   },
-  'instantaneous voltage l3': {
+  'instantaneous_voltage_l3': {
     type: Number
   },
-  'instantaneous current l1': {
+  'instantaneous_current_l1': {
     type: Number
   },
-  'instantaneous current l2': {
+  'instantaneous_current_l2': {
     type: Number
   },
-  'instantaneous current l3': {
+  'instantaneous_current_l3': {
     type: Number
   },
-  'instantaneous power l1 p': {
+  'instantaneous_power_l1_p': {
     type: Number
   },
-  'instantaneous power l2 p': {
+  'instantaneous_power_l2_p': {
     type: Number
   },
-  'instantaneous power l3 p': {
+  'instantaneous_power_l3_p': {
     type: Number
   },
-  'instantaneous power l1 n': {
+  'instantaneous_power_l1_n': {
     type: Number
   },
-  'instantaneous power l2 n': {
+  'instantaneous_power_l2_n': {
     type: Number
   },
-  'instantaneous power l3 n': {
+  'instantaneous_power_l3_n': {
     type: Number
   }
 },

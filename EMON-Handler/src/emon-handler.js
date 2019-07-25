@@ -6,8 +6,8 @@ import { gasModel } from './db_schema/gas';
 import { meterModel } from './db_schema/meter';
 import { liveModel } from './db_schema/live';
 
-const gasItems = ['device type', 'identifier gas', 'value'];
-const liveItems = ['power delivered', 'power returned']
+const gasItems = ['device_type', 'identifier_gas', 'timestampGas' ,'value'];
+const liveItems = ['power_delivered', 'power_returned']
 
 const processLine = (line) => {
   const indexValue = line.indexOf('(');
@@ -26,7 +26,8 @@ const processTelegram = async (message) => {
   let live = {};
   lines.forEach((line, index) => {
     const value = processLine(line);
-    if (value !== undefined) telegram[value.key] = value.value;
+    if (value !== undefined && typeof value.value != 'object') telegram[value.key] = value.value;
+    else if (value !== undefined && typeof value.value == 'object') telegram = {...telegram, ...value.value};
   });
   delete telegram.undefined;
 
@@ -34,6 +35,9 @@ const processTelegram = async (message) => {
     gas[item] = telegram[item];
     delete telegram[item];
   });
+
+  gas['timestamp'] = gas['timestampGas'];
+  delete gas['timestampGas'];
 
   liveItems.forEach((item) => {
     live[item] = telegram[item];
@@ -43,23 +47,24 @@ const processTelegram = async (message) => {
   live['identifier'] = telegram.identifier;
   live['timestamp'] = telegram.timestamp;
   gas['identifier'] = telegram.identifier;
-  console.log(liveItems);
+  //console.log(moment(telegram.timestamp).seconds());
   const updateLive = (moment(telegram.timestamp).seconds() % 10 == 2);
   const updateMeter = (moment(telegram.timestamp).seconds() % 30 == 0);
   const updateGas = (moment(telegram.timestamp).minutes() % 5 == 1) && (moment(telegram.timestamp).seconds() == 1);
 
   if (updateLive) {
-    console.log('Update Live!');
+    console.log(telegram.timestamp + ' Update Live!');
+    
     await saveData(new liveModel(live));
   }
 
   if (updateMeter) {
-    console.log('Update Meter!');
+    console.log(telegram.timestamp + ' Update Meter!');
     await saveData(new meterModel(telegram));
   }
 
   if (updateGas) {
-    console.log('Update Gas!');
+    console.log(telegram.timestamp + ' Update Gas!');
     await saveData(new gasModel(gas));
   }
 

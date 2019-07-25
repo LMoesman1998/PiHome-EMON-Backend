@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const liveSchema = new Schema({
-  'power delivered': {
+  'power_delivered': {
     type: Number
   },
-  'power returned': {
+  'power_returned': {
     type: Number
   },
   'identifier': {

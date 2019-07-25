@@ -1,11 +1,24 @@
-const test = async (parent, {}, context, info) => {
 
-  return "Hello World"
+const getGas = async (parent, {}, context, info) => {
+
+  return null;
+};
+
+const getLive = async (parent, {}, context, info) => {
+
+  return null;
+};
+
+const getMeter = async (parent, {}, context, info) => {
+
+  return null;
 };
 
 const RESOLVERS = {
   Query: {
-    test
+    getGas,
+    getLive,
+    getMeter
   }
 }
 
