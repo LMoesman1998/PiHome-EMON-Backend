@@ -6,3 +6,6 @@ API/build/
 EMON-Handler/build/
 
 config\.js
+ca.crt
+client.crt
+client.key
