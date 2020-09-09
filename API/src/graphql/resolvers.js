@@ -1,15 +1,15 @@
 
-const getGas = async (parent, {}, context, info) => {
+const getGas = async (parent, {from, to, unit}, context, info) => {
 
   return null;
 };
 
-const getLive = async (parent, {}, context, info) => {
+const getLive = async (parent, {from, to, unit}, context, info) => {
 
   return null;
 };
 
-const getMeter = async (parent, {}, context, info) => {
+const getMeter = async (parent, {from, to, unit}, context, info) => {
 
   return null;
 };

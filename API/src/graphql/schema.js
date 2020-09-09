@@ -69,7 +69,7 @@ type Data {
   raw: Float!
 }
 
-schema
+schema {
   query: Query
 }
 `;
